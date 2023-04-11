@@ -1,6 +1,7 @@
-import express from 'express'
-import { engine } from 'express-handlebars'
-import methodOverride from 'method-override'
+const express = require('express')
+const { engine } = require('express-handlebars')
+const methodOverride = require('method-override')
+const generateUrl = require('./generate_url')
 
 const app = express()
 const port = 3000
@@ -17,6 +18,7 @@ app.use(methodOverride('_method'))
 
 // 以下路由
 app.get('/', (req, res) => {
+  generateUrl()
   res.render('index')
 })
 
