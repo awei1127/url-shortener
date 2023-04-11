@@ -2,8 +2,14 @@
 
 <form action="/main/index" method="POST">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" placeholder="在這裡輸入你的網址..." aria-label="enter URL"
+    <input type="text" class="form-control" name="url" placeholder="在這裡輸入你的網址..." aria-label="enter URL"
       aria-describedby="button-addon2">
-    <button class="btn btn-secondary" type="summit" id="button-addon2">縮址</button>
+    <button class="btn btn-secondary" type="submit" id="button-addon2">縮址</button>
   </div>
 </form>
+
+{{#if randomString}}
+<div>
+  <h2>http://localhost:3000/{{randomString}}</h2>
+</div>
+{{/if}}

@@ -25,7 +25,6 @@ function generateUrl() {
     randomString += sample(collection)
   }
 
-  console.log(randomString)
   return randomString
 }
 
