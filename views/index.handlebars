@@ -2,7 +2,8 @@
 
 <form action="/main/index" method="POST">
   <div class="input-group mb-3">
-    <input type="text" class="form-control" name="url" placeholder="在這裡輸入你的網址..." aria-label="enter URL"
+    <!--↓↓↓↓↓↓↓↓↓↓↓↓↓規格：若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+    <input type="url" required class="form-control" name="url" placeholder="在這裡輸入你的網址..." aria-label="enter URL"
       aria-describedby="button-addon2">
     <button class="btn btn-secondary" type="submit" id="button-addon2">縮址</button>
   </div>
@@ -11,5 +12,11 @@
 {{#if randomString}}
 <div>
   <h2>http://localhost:3000/{{randomString}}</h2>
+</div>
+{{/if}}
+
+{{#if errorMsg}}
+<div>
+  <h2>{{errorMsg}}</h2>
 </div>
 {{/if}}

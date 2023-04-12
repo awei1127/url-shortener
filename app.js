@@ -29,6 +29,12 @@ app.get('/main/index', (req, res) => {
 app.post('/main/index', (req, res) => {
   // 拿到使用者輸入的網址
   const url = req.body.url
+  // 第二道防線：若使用者用開發者工具把HTML的input的require屬性拿掉後按下了送出鈕，則顯示提示
+  if (url.length === 0) {
+    res.render('index', { errorMsg: '請不要玩開發者工具' })
+    return
+  }
+  // ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓規格：輸入相同網址時，產生一樣的縮址。↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓
   // 搜尋資料庫 回傳找到的第一筆資料 該資料的url完全符合使用者輸入的網址
   return UrlPair.findOne({ url: new RegExp(`^${url}$`) })
     .lean()
