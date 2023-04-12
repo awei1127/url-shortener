@@ -1,7 +1,7 @@
 # url-shortener
 A small tool that can help you shorten URLs
 
-![Index page about Restaurant List](./public/image/linkde.png)
+![Index page about url-shortener](./public/image/linked.png)
 
 ## Features
 - searching restaurants by title
