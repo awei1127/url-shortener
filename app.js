@@ -16,6 +16,9 @@ app.set('view engine', 'handlebars')
 // 使用body-parser(以在接下來能夠解析使用者送出的post request body)
 app.use(express.urlencoded({ extended: true }))
 
+// 設定靜態檔案資料夾
+app.use(express.static('public'))
+
 // 設定每一筆請求都會先以 methodOverride 進行前置處理
 app.use(methodOverride('_method'))
 
@@ -67,7 +70,6 @@ app.get('/:randomString', (req, res) => {
       }
     }).catch(error => console.log(error))
 })
-
 
 // 啟動並監聽伺服器
 app.listen(port, () => {

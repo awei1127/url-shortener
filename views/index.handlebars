@@ -9,11 +9,27 @@
   </div>
 </form>
 
-{{#if randomString}}
-<div>
+<div class="container success-block">
+  {{#if randomString}}
   <h2>http://localhost:3000/{{randomString}}</h2>
+  <button type="button" class="btn btn-outline-success" id="copy" data-bs-toggle="modal" data-bs-target="#copied"
+    data-bs-placement="bottom" title="點擊複製">Copy</button>
+
+  <!-- Modal -->
+  <div class="modal fade" id="copied" tabindex="-1" aria-labelledby="copiedLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-body">
+          <h2>✔已成功複製到剪貼簿</h2>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  {{/if}}
 </div>
-{{/if}}
 
 {{#if errorMsg}}
 <div>
