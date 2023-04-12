@@ -1,38 +1,46 @@
-<h1>這裡是短網址產生器，歡迎隨意使用。</h1>
-
-<form action="/main/index" method="POST">
-  <div class="input-group mb-3">
-    <!--↓↓↓↓↓↓↓↓↓↓↓↓↓規格：若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者↓↓↓↓↓↓↓↓↓↓↓↓↓-->
-    <input type="url" required class="form-control" name="url" placeholder="在這裡輸入你的網址..." aria-label="enter URL"
-      aria-describedby="button-addon2">
-    <button class="btn btn-secondary" type="submit" id="button-addon2">縮址</button>
+<div class="container d-flex flex-column align-items-center">
+  <div class="logo my-5 d-flex justify-content-center">
+    <img class="w-50" src="/images/linked.png" alt="logo">
   </div>
-</form>
 
-<div class="container success-block">
-  {{#if randomString}}
-  <h2>http://localhost:3000/{{randomString}}</h2>
-  <button type="button" class="btn btn-outline-success" id="copy" data-bs-toggle="modal" data-bs-target="#copied"
-    data-bs-placement="bottom" title="點擊複製">Copy</button>
+  <div class="w-50">
+    <form action="/main/index" method="POST">
+      <div class="input-group mb-3">
+        <!--↓↓↓↓↓↓↓↓↓↓↓↓↓規格：若使用者沒有輸入內容，就按下了送出鈕，需要防止表單送出並提示使用者↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+        <input type="url" required class="form-control" name="url" placeholder="在這裡輸入你的網址..." aria-label="enter URL"
+          aria-describedby="button-addon2" value="{{url}}">
+        <button class="btn btn-secondary" type="submit" id="button-addon2">縮址</button>
+      </div>
+    </form>
+  </div>
 
-  <!-- Modal -->
-  <div class="modal fade" id="copied" tabindex="-1" aria-labelledby="copiedLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-body">
-          <h2>✔已成功複製到剪貼簿</h2>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+  <div class="success-block container d-flex flex-column align-items-center">
+    {{#if randomString}}
+    <h2>你的短網址為</h2>
+    <h2>http://localhost:3000/{{randomString}}</h2>
+    <button type="button" class="btn btn-outline-success" id="copy" data-bs-toggle="modal" data-bs-target="#copied"
+      data-bs-placement="bottom" title="點擊複製">Copy</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="copied" tabindex="-1" aria-labelledby="copiedLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <h2>✔已成功複製到剪貼簿</h2>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
+    {{/if}}
+  </div>
+
+  {{#if errorMsg}}
+  <div class="container d-flex flex-column align-items-center">
+    <h2>{{errorMsg}}</h2>
   </div>
   {{/if}}
-</div>
 
-{{#if errorMsg}}
-<div>
-  <h2>{{errorMsg}}</h2>
 </div>
-{{/if}}

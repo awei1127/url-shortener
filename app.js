@@ -44,7 +44,7 @@ app.post('/main/index', (req, res) => {
     .then(urlPair => {
       // 如果已存在就取出隨機碼渲染
       if (urlPair) {
-        res.render('index', { randomString: urlPair.randomString })
+        res.render('index', { randomString: urlPair.randomString, url: url })
         // 如果不存在就產生一組隨機碼渲染 且與輸入的網址一起存入資料庫
       } else {
         const randomString = generateUrl()
